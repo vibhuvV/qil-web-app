@@ -1,2 +1,3 @@
-export const BASE_APP_LOCAL_STORAGE_KEY = "test-maker";
-export const BASE_APP_URL = "https://13.203.160.187/";
+export const BASE_APP_LOCAL_STORAGE_KEY =
+  import.meta.env.VITE_APP_LS_KEY ?? "test-maker";
+export const BASE_APP_URL = import.meta.env.VITE_BASE_API_URL;
