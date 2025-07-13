@@ -42,6 +42,7 @@ import { cn } from "@/utils/style";
 
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
+import { S3_BASE_URL } from "@/constants/app";
 
 const xrayLabSchema = z.object({
   module: z.string().optional(),
@@ -208,7 +209,7 @@ function XrayLabComponent() {
                     "h-auto w-auto object-cover transition-all hover:scale-105 aspect-[16/9]"
                   }
                   height={150}
-                  src={`https://labpdfs.s3.ap-south-1.amazonaws.com/${doc.thumbnail}`}
+                  src={`${S3_BASE_URL}/${doc.thumbnail}`}
                   width={150}
                 />
               </div>
@@ -242,7 +243,7 @@ function XrayLabComponent() {
                     </DialogHeader>
                     <Document
                       className="space-y-6 flex-1 flex flex-col items-center overflow-auto"
-                      file={`https://labpdfs.s3.ap-south-1.amazonaws.com/${doc.file}`}
+                      file={`${S3_BASE_URL}/${doc.file}`}
                       loading={
                         <div className="space-y-2">
                           <Skeleton className="aspect-[16/9] rounded-none w-[900px]" />
@@ -269,7 +270,7 @@ function XrayLabComponent() {
                       <Button asChild>
                         <a
                           download={doc.file}
-                          href={`https://labpdfs.s3.ap-south-1.amazonaws.com/${doc.file}`}
+                          href={`${S3_BASE_URL}/${doc.file}`}
                           target="_blank"
                         >
                           Download
